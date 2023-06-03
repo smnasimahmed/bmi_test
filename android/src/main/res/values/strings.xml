@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="settings_status">Status: %s</string>
+
+    <string name="normal">Normal.</string>
+    <string name="low_power">Screen off.</string>
+    <string name="low_voltage">Low voltage.</string>
+    <string name="error">Weighing overload.</string>
+    <string name="time_out">Weighing timeout.</string>
+
+    <string name="set_unit_success">Set unit success.</string>
+    <string name="set_unit_failed">Set unit failed.</string>
+    <string name="set_user_success">Set user success</string>
+    <string name="set_user_failed">Set user failed.</string>
+    <string name="adc_measured_ind">Impedance measurement&#8230;</string>
+    <string name="adc_error">Impedance measurement failed.</string>
+
+    <string name="state_connected">Connected</string>
+    <string name="state_disconnected">Disconnected from device.</string>
+    <string name="state_service_discovered">Service found.</string>
+    <string name="state_indication_success">Indication success.</string>
+    <string name="state_time_out">Connection timed out.</string>
+    <string name="state_connecting">Connecting&#8230;</string>
+
+    <string-array name="connect_state">
+        <item>Connecting…</item>
+        <item>Not connected</item>
+        <item>Connected </item>
+    </string-array>
+</resources>

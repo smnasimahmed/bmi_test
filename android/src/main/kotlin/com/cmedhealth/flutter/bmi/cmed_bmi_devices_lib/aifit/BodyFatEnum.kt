@@ -1,0 +1,5 @@
+package com.cmedhealth.flutter.bmi.cmed_bmi_devices_lib.aifit
+
+enum class BodyFatEnum {
+    BMR, BFR, BMI, BODY_WATER, BONE_MASS, FAT_MASS, METABOLIC_AGE, MUSCLE_MASS, MUSCLE_RATE, OBESITY_LEVEL, PROTEIN_MASS, PROTEIN_RATE, STD_WEIGHT, SFR, VFI, WEIGHT_CONTROL, WEIGHT_WITHOUT_FAT
+}
