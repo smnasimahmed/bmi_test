@@ -5,10 +5,10 @@ buildscript {
     ext.kotlin_version = '1.8.21'
     repositories {
         google()
-        mavenCentral()
         maven {
             url 'https://jitpack.io'
         }
+        mavenCentral()
     }
 
     dependencies {
@@ -20,10 +20,10 @@ buildscript {
 allprojects {
     repositories {
         google()
-        mavenCentral()
         maven {
             url 'https://jitpack.io'
         }
+        mavenCentral()
     }
 }
 
@@ -49,7 +49,6 @@ android {
 
     defaultConfig {
         minSdkVersion 21
-        multiDexEnabled true
         ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'
     }
 
@@ -79,7 +78,5 @@ android {
 
 dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
-    implementation files('src/libs/iweightlibrary.aar')
-    def multidex_version = "2.0.1"
-    implementation "androidx.multidex:multidex:$multidex_version"
+    implementation 'com.github.elinkthings:BodyFatScaleSDKRepositoryAndroid:1.5.0'
 }
