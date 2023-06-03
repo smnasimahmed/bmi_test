@@ -41,11 +41,6 @@ class MockCmedBmiDevicesLibPlatform
   }
 
   @override
-  Future<void> measure() async {
-    debugPrint("measure");
-  }
-
-  @override
   Future<void> setUser(user) async {
     debugPrint("setUser:$user");
   }

@@ -8,13 +8,15 @@ class MethodChannelCmedBmiDevicesLib extends CmedBmiDevicesLibPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
   final methodChannel = const MethodChannel('cmed_bmi_devices_lib/method');
+
   /// The event channel used to interact with the native platform.
   @visibleForTesting
   final eventChannel = const EventChannel('cmed_bmi_devices_lib/event');
 
   @override
   Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
+    final version =
+        await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
 
@@ -35,6 +37,7 @@ class MethodChannelCmedBmiDevicesLib extends CmedBmiDevicesLibPlatform {
 
   @override
   Future<void> setUser(user) async {
-    await methodChannel.invokeMethod<String>('setUser', {"user":user.toJson()});
+    await methodChannel
+        .invokeMethod<String>('setUser', {"user": user.toJson()});
   }
 }
