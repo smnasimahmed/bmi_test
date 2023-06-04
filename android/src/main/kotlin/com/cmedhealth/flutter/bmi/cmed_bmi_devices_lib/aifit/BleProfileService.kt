@@ -140,60 +140,71 @@ abstract class BleProfileService<E : WBYBinder?> internal constructor(private va
                         onStateChanged(did)
                     } else {
                         val cmd: String?
-                        if ("aicare.net.cn.fatscale.action.CONNECT_ERROR" == action) {
-                            cmd = intent.getStringExtra("aicare.net.cn.fatscale.extra.ERROR_MSG")
-                            val errCode =
-                                intent.getIntExtra("aicare.net.cn.fatscale.extra.ERROR_CODE", -1)
-                            onError(cmd, errCode)
-                        } else if ("aicare.net.cn.fatscale.action.WEIGHT_DATA" == action) {
-                            val weightData =
-                                intent.getSerializableExtra("aicare.net.cn.fatscale.extra.WEIGHT_DATA") as WeightData?
-                            onGetWeightData(weightData)
-                        } else if ("aicare.net.cn.fatscale.action.SETTING_STATUS_CHANGED" == action) {
-                            did = intent.getIntExtra(
-                                "aicare.net.cn.fatscale.extra.SETTING_STATUS",
-                                -1
-                            )
-                            onGetSettingStatus(did)
-                        } else if ("aicare.net.cn.fatscale.action.RESULT_CHANGED" == action) {
-                            did =
-                                intent.getIntExtra("aicare.net.cn.fatscale.extra.RESULT_INDEX", -1)
-                            result = intent.getStringExtra("aicare.net.cn.fatscale.extra.RESULT")
-                            onGetResult(did, result)
-                        } else if ("aicare.net.cn.fatscale.action.FAT_DATA" == action) {
-                            val isHistory = intent.getBooleanExtra(
-                                "aicare.net.cn.fatscale.extra.IS_HISTORY",
-                                false
-                            )
-                            val bodyFatData =
-                                intent.getSerializableExtra("aicare.net.cn.fatscale.extra.FAT_DATA") as BodyFatData?
-                            onGetFatData(isHistory, bodyFatData)
-                        } else if ("aicare.net.cn.fatscale.action.AUTH_DATA" == action) {
-                            val sources =
-                                intent.getByteArrayExtra("aicare.net.cn.fatscale.extra.SOURCE_DATA")
-                            val bleReturn =
-                                intent.getByteArrayExtra("aicare.net.cn.fatscale.extra.BLE_DATA")
-                            val encrypt =
-                                intent.getByteArrayExtra("aicare.net.cn.fatscale.extra.ENCRYPT_DATA")
-                            val isEquals = intent.getBooleanExtra(
-                                "aicare.net.cn.fatscale.extra.IS_EQUALS",
-                                false
-                            )
-                            onGetAuthData(sources, bleReturn, encrypt, isEquals)
-                        } else if ("aicare.net.cn.fatscale.action.DID" == action) {
-                            did = intent.getIntExtra("aicare.net.cn.fatscale.extra.DID", -1)
-                            onGetDID(did)
-                        } else if ("aicare.net.cn.fatscale.action.DECIMAL_INFO" == action) {
-                            val decimalInfo =
-                                intent.getSerializableExtra("aicare.net.cn.fatscale.extra.DECIMAL_INFO") as DecimalInfo?
-                            onGetDecimalInfo(decimalInfo)
-                        } else if ("aicare.net.cn.fatscale.action.CMD" == action) {
-                            cmd = intent.getStringExtra("aicare.net.cn.fatscale.extra.CMD")
-                            onGetCMD(cmd)
-                        } else if ("aicare.net.cn.fatscale.action.ALGORITHM_INFO" == action) {
-                            val algorithmInfo =
-                                intent.getSerializableExtra("aicare.net.cn.fatscale.extra.ALGORITHM_INFO") as AlgorithmInfo?
-                            onGetAlgorithmInfo(algorithmInfo)
+                        when (action) {
+                            "aicare.net.cn.fatscale.action.CONNECT_ERROR" -> {
+                                cmd = intent.getStringExtra("aicare.net.cn.fatscale.extra.ERROR_MSG")
+                                val errCode =
+                                    intent.getIntExtra("aicare.net.cn.fatscale.extra.ERROR_CODE", -1)
+                                onError(cmd, errCode)
+                            }
+                            "aicare.net.cn.fatscale.action.WEIGHT_DATA" -> {
+                                val weightData =
+                                    intent.getSerializableExtra("aicare.net.cn.fatscale.extra.WEIGHT_DATA") as WeightData?
+                                onGetWeightData(weightData)
+                            }
+                            "aicare.net.cn.fatscale.action.SETTING_STATUS_CHANGED" -> {
+                                did = intent.getIntExtra(
+                                    "aicare.net.cn.fatscale.extra.SETTING_STATUS",
+                                    -1
+                                )
+                                onGetSettingStatus(did)
+                            }
+                            "aicare.net.cn.fatscale.action.RESULT_CHANGED" -> {
+                                did =
+                                    intent.getIntExtra("aicare.net.cn.fatscale.extra.RESULT_INDEX", -1)
+                                result = intent.getStringExtra("aicare.net.cn.fatscale.extra.RESULT")
+                                onGetResult(did, result)
+                            }
+                            "aicare.net.cn.fatscale.action.FAT_DATA" -> {
+                                val isHistory = intent.getBooleanExtra(
+                                    "aicare.net.cn.fatscale.extra.IS_HISTORY",
+                                    false
+                                )
+                                val bodyFatData =
+                                    intent.getSerializableExtra("aicare.net.cn.fatscale.extra.FAT_DATA") as BodyFatData?
+                                onGetFatData(isHistory, bodyFatData)
+                            }
+                            "aicare.net.cn.fatscale.action.AUTH_DATA" -> {
+                                val sources =
+                                    intent.getByteArrayExtra("aicare.net.cn.fatscale.extra.SOURCE_DATA")
+                                val bleReturn =
+                                    intent.getByteArrayExtra("aicare.net.cn.fatscale.extra.BLE_DATA")
+                                val encrypt =
+                                    intent.getByteArrayExtra("aicare.net.cn.fatscale.extra.ENCRYPT_DATA")
+                                val isEquals = intent.getBooleanExtra(
+                                    "aicare.net.cn.fatscale.extra.IS_EQUALS",
+                                    false
+                                )
+                                onGetAuthData(sources, bleReturn, encrypt, isEquals)
+                            }
+                            "aicare.net.cn.fatscale.action.DID" -> {
+                                did = intent.getIntExtra("aicare.net.cn.fatscale.extra.DID", -1)
+                                onGetDID(did)
+                            }
+                            "aicare.net.cn.fatscale.action.DECIMAL_INFO" -> {
+                                val decimalInfo =
+                                    intent.getSerializableExtra("aicare.net.cn.fatscale.extra.DECIMAL_INFO") as DecimalInfo?
+                                onGetDecimalInfo(decimalInfo)
+                            }
+                            "aicare.net.cn.fatscale.action.CMD" -> {
+                                cmd = intent.getStringExtra("aicare.net.cn.fatscale.extra.CMD")
+                                onGetCMD(cmd)
+                            }
+                            "aicare.net.cn.fatscale.action.ALGORITHM_INFO" -> {
+                                val algorithmInfo =
+                                    intent.getSerializableExtra("aicare.net.cn.fatscale.extra.ALGORITHM_INFO") as AlgorithmInfo?
+                                onGetAlgorithmInfo(algorithmInfo)
+                            }
                         }
                     }
                 }

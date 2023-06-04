@@ -116,8 +116,4 @@ class CMEDAiFitWeightHandler internal constructor(
     private fun getFormattedWeight(weightData: WeightData): String {
         return (weightData.weight / 10).toString()
     }
-
-    fun getContext(): Context {
-        return context
-    }
 }
