@@ -78,8 +78,8 @@ android {
 
 dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
-    api project(':iweightlibrary')
-    //implementation 'com.github.elinkthings:BodyFatScaleSDKRepositoryAndroid:1.5.0'
+    //api project(':iweightlibrary')
+    implementation 'com.github.elinkthings:BodyFatScaleSDKRepositoryAndroid:1.5.1'
     //implementation 'https://github.com/lincoln4791/BodyFatScaleSDKRepositoryAndroid.git'
     //compileOnly files("libs/iweightlibrary-release.aar")
 }
