@@ -4,6 +4,7 @@ import aicare.net.cn.iweightlibrary.entity.*
 import aicare.net.cn.iweightlibrary.utils.AicareBleConfig
 import aicare.net.cn.iweightlibrary.utils.ParseData
 import aicare.net.cn.iweightlibrary.wby.WBYService
+import aicare.net.cn.iweightlibrary.wby.WBYService.RECEIVER_EXPORTED
 import aicare.net.cn.iweightlibrary.wby.WBYService.WBYBinder
 import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
@@ -12,6 +13,7 @@ import android.bluetooth.le.BluetoothLeScanner
 import android.bluetooth.le.ScanCallback
 import android.bluetooth.le.ScanResult
 import android.content.*
+import android.os.Build
 import android.os.Handler
 import android.os.IBinder
 import android.text.TextUtils
@@ -210,7 +212,12 @@ abstract class BleProfileService<E : WBYBinder?> internal constructor(private va
                 }
             }
         }
-        context.registerReceiver(mCommonBroadcastReceiver, makeIntentFilter())
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            context.registerReceiver(mCommonBroadcastReceiver, makeIntentFilter(), RECEIVER_EXPORTED)
+        }
+        else{
+            context.registerReceiver(mCommonBroadcastReceiver, makeIntentFilter())
+        }
     }
 
     protected fun bindService(address: String?) {
