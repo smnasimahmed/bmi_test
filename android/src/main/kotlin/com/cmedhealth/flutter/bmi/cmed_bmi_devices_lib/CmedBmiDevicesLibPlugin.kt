@@ -20,6 +20,10 @@ import io.flutter.plugin.common.MethodChannel.Result
 class CmedBmiDevicesLibPlugin : FlutterPlugin, MethodCallHandler, EventChannel.StreamHandler,
     ActivityAware,
     FrecomDeviceCallback {
+
+    companion object {
+        val TAG = CmedBmiDevicesLibPlugin::class.simpleName
+    }
     /// The MethodChannel that will the communication between Flutter and native Android
     ///
     /// This local reference serves to register the plugin with the Flutter Engine and unregister it
@@ -75,10 +79,6 @@ class CmedBmiDevicesLibPlugin : FlutterPlugin, MethodCallHandler, EventChannel.S
 
     override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
         channel.setMethodCallHandler(null)
-    }
-
-    companion object {
-        val TAG = CmedBmiDevicesLibPlugin::class.simpleName
     }
 
     override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
