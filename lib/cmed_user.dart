@@ -6,8 +6,8 @@ class CMEDUser {
   double? heightInCm;
   double? weightInKg;
 
-  CMEDUser(this.id, this.gender, this.ageInDays, this.birthDate,
-      this.heightInCm, this.weightInKg);
+  CMEDUser({this.id, this.gender, this.ageInDays, this.birthDate,
+      this.heightInCm, this.weightInKg});
 
   CMEDUser.fromJson(Map<String, dynamic> json) {
     id = json['id'];
