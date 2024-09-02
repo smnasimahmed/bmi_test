@@ -17,7 +17,7 @@ class BleHandler(
     interface AiFitWeightCallback {
         fun handleMessage(msg: String?)
         fun onGetWeight(weight: WeightData?)
-        fun onGetFatData(fatData: FatData?)
+        fun onGetFatData(bodyFatData: BodyFatData?)
     }
 
     private val TAG = "BleHandler"
@@ -119,9 +119,7 @@ class BleHandler(
 
             override fun onGetResult(resultCode: Int, result: String?) {}
             override fun onGetFatData(status: Boolean, bodyFatData: BodyFatData?) {
-                val fatData = FatData(CalcParam(bodyFatData))
-                Log.v("FAT_DATA", fatData.toString())
-                aiFitWeightCallback.onGetFatData(fatData)
+                aiFitWeightCallback.onGetFatData(bodyFatData)
             }
 
             override fun onGetDecimalInfo(decimalInfo: DecimalInfo?) {

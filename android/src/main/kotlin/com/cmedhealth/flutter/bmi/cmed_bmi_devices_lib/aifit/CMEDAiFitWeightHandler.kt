@@ -14,7 +14,7 @@ import kotlin.math.roundToInt
 
 class CMEDAiFitWeightHandler internal constructor(
     private val context: Context,
-    private val callback: FrecomDeviceCallback
+    private val callback: FrecomDeviceCallback,
 ) : BleHandler.AiFitWeightCallback {
     private var bleHandler: BleHandler? = null
     private var user: CMEDUser = CMEDUser(1, GenderEnum.MALE.name, 10585, 0L, 167.0, 60.0)
@@ -107,9 +107,11 @@ class CMEDAiFitWeightHandler internal constructor(
         }
     }
 
-    override fun onGetFatData(fatData: FatData?) {
+    override fun onGetFatData(bodyFatData: BodyFatData?) {
+        val fatData = Gson().toJson((CalcParam(bodyFatData))
+        Log.v("FAT_DATA", fatData.toString())
         (context as Activity).runOnUiThread {
-            callback.onGetResponse("${ResponseEnum.CS_FAT_DATA}:${Gson().toJson(fatData)}")
+            callback.onGetResponse("${ResponseEnum.CS_FAT_DATA}:$fatData")
         }
     }
 
