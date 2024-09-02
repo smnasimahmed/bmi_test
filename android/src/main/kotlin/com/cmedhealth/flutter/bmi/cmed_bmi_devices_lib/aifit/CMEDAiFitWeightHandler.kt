@@ -1,6 +1,7 @@
 package com.cmedhealth.flutter.bmi.cmed_bmi_devices_lib.aifit
 
 
+import aicare.net.cn.iweightlibrary.entity.BodyFatData
 import aicare.net.cn.iweightlibrary.entity.User
 import aicare.net.cn.iweightlibrary.entity.WeightData
 import android.app.Activity
@@ -108,8 +109,8 @@ class CMEDAiFitWeightHandler internal constructor(
     }
 
     override fun onGetFatData(bodyFatData: BodyFatData?) {
-        val fatData = Gson().toJson((CalcParam(bodyFatData))
-        Log.v("FAT_DATA", fatData.toString())
+        val fatData = Gson().toJson((CalcParam(bodyFatData)))
+        Log.v("FAT_DATA", fatData)
         (context as Activity).runOnUiThread {
             callback.onGetResponse("${ResponseEnum.CS_FAT_DATA}:$fatData")
         }
