@@ -6,8 +6,8 @@ class CMEDUser {
   double? heightInCm;
   double? weightInKg;
 
-  CMEDUser({this.id, this.gender, this.ageInDays, this.birthDate,
-      this.heightInCm, this.weightInKg});
+  CMEDUser({this.id = 1, required this.gender, required this.ageInDays, required this.birthDate,
+    required this.heightInCm, required this.weightInKg});
 
   CMEDUser.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -20,12 +20,12 @@ class CMEDUser {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['gender'] = gender;
-    data['ageInDays'] = ageInDays;
-    data['birthDate'] = birthDate;
-    data['heightInCm'] = heightInCm;
-    data['weightInKg'] = weightInKg;
+    data['id'] = id??1;
+    data['gender'] = gender??"Male";
+    data['ageInDays'] = ageInDays??10585;
+    data['birthDate'] = birthDate??0;
+    data['heightInCm'] = heightInCm??167.0;
+    data['weightInKg'] = weightInKg??60.0;
     return data;
   }
 }
