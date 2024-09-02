@@ -37,7 +37,6 @@ class MethodChannelCmedBmiDevicesLib extends CmedBmiDevicesLibPlatform {
 
   @override
   Future<void> setUser(user) async {
-    await methodChannel
-        .invokeMethod<String>('setUser', {"user": user.toJson()});
+    await methodChannel.invokeMethod<bool>('setUser', {"user": user.toJson()});
   }
 }

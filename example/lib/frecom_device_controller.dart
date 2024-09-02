@@ -1,6 +1,7 @@
 import 'dart:core';
 
 import 'package:cmed_bmi_devices_lib/cmed_bmi_devices_lib.dart';
+import 'package:cmed_bmi_devices_lib/cmed_user.dart';
 import 'package:get/get.dart';
 
 class FrecomDeviceController extends GetxController {
@@ -15,11 +16,19 @@ class FrecomDeviceController extends GetxController {
         reading.value = event.toString().split(":")[1];
       }
     });
+    setUser();
     await _cmedBmiDevicesLib.connect();
   }
 
   setUser() {
-    // _cmedBmiDevicesLib.setUser(CMEDUser());
+    _cmedBmiDevicesLib.setUser(CMEDUser(
+        id: 10,
+        gender: 'Female' ,
+        ageInDays: 9650,
+        birthDate: 961851562000,
+        heightInCm: 165,
+        weightInKg: 67
+    ));
   }
 
   disconnect() {
