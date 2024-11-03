@@ -129,11 +129,11 @@ class BleHandler(
 
             override fun onGetAlgorithmInfo(algorithmInfo: AlgorithmInfo?) {
                 if (user != null && algorithmInfo != null) {
-                    Log.v("FAT_DATA:Height", user.height.toString())
+                    //Log.v("FAT_DATA:Height", user.height.toString())
                     val bodyFatData = AicareBleConfig
                         .getBodyFatData(
                             algorithmInfo.algorithmId,
-                            user.sex,
+                            1,//user.sex,
                             300,//user.age,
                             ParseData.getKgWeight(algorithmInfo.weight, algorithmInfo.decimalInfo).toDouble(),
                             100,//user.height.toInt(),
