@@ -127,39 +127,38 @@ class BleHandler(
             }
 
             override fun onGetAlgorithmInfo(algorithmInfo: AlgorithmInfo?) {
-                if (user != null) {
+                if (user != null && algorithmInfo != null) {
+                    Log.v("FAT_DATA", user.height?.toInt()??0)
                     val bodyFatData = AicareBleConfig
                         .getBodyFatData(
-                            algorithmInfo?.algorithmId!!,
+                            algorithmInfo.algorithmId,
                             user.sex,
-                            user.age,
-                            ParseData.getKgWeight(algorithmInfo.weight, algorithmInfo.decimalInfo)
-                                .toDouble(),
-                            user
-                                .height,
+                            20,//user.age,
+                            ParseData.getKgWeight(algorithmInfo.weight, algorithmInfo.decimalInfo).toDouble(),
+                            53,//user.height.toInt(),
                             algorithmInfo.adc
                         )
-                    val bodyFatData1 = BodyFatData()
-                    bodyFatData1.age = user.age
-                    bodyFatData1.weight = algorithmInfo.weight
-                    bodyFatData1.sex = user.sex
-                    bodyFatData1.height = user.height
-                    bodyFatData1.adc = algorithmInfo.adc
-                    bodyFatData1.bfr = bodyFatData.bfr
-                    bodyFatData1.bm = bodyFatData.bm
-                    bodyFatData1.bmi = bodyFatData.bmi
-                    bodyFatData1.bmr = bodyFatData.bmr.toDouble()
-                    bodyFatData1.bodyAge = bodyFatData.bodyAge
-                    bodyFatData1.pp = bodyFatData.pp
-                    bodyFatData1.rom = bodyFatData.rom
-                    bodyFatData1.vwc = bodyFatData.vwc
-                    bodyFatData1.sfr = bodyFatData.sfr
-                    bodyFatData1.uvi = bodyFatData.uvi
-                    bodyFatData1.decimalInfo = algorithmInfo.decimalInfo
-                    bodyFatData1.number = 1
-                    bodyFatData1.date = ParseData.getDate()
-                    bodyFatData1.time = ParseData.getTime()
-                    onGetFatData(false, bodyFatData1)
+//                    val bodyFatData1 = BodyFatData()
+//                    //bodyFatData1.age = user.age
+//                    bodyFatData1.weight = algorithmInfo.weight
+//                    bodyFatData1.sex = user.sex
+//                    //bodyFatData1.height = user.height.toInt()
+//                    bodyFatData1.adc = algorithmInfo.adc
+//                    bodyFatData1.bfr = bodyFatData.bfr
+//                    bodyFatData1.bm = bodyFatData.bm
+//                    bodyFatData1.bmi = bodyFatData.bmi
+//                    bodyFatData1.bmr = bodyFatData.bmr.toDouble()
+//                    bodyFatData1.bodyAge = bodyFatData.bodyAge
+//                    bodyFatData1.pp = bodyFatData.pp
+//                    bodyFatData1.rom = bodyFatData.rom
+//                    bodyFatData1.vwc = bodyFatData.vwc
+//                    bodyFatData1.sfr = bodyFatData.sfr
+//                    bodyFatData1.uvi = bodyFatData.uvi
+//                    bodyFatData1.decimalInfo = algorithmInfo.decimalInfo
+//                    bodyFatData1.number = 1
+//                    bodyFatData1.date = ParseData.getDate()
+//                    bodyFatData1.time = ParseData.getTime()
+//                    onGetFatData(false, bodyFatData1)
                 }
             }
 
