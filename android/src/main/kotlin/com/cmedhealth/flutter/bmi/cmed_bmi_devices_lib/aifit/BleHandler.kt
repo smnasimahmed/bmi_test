@@ -8,6 +8,7 @@ import aicare.net.cn.iweightlibrary.wby.WBYService.WBYBinder
 import android.content.Context
 import android.util.Log
 import com.cmedhealth.flutter.bmi.cmed_bmi_devices_lib.R
+import com.google.gson.Gson
 
 class BleHandler(
     context: Context,
@@ -128,7 +129,7 @@ class BleHandler(
 
             override fun onGetAlgorithmInfo(algorithmInfo: AlgorithmInfo?) {
                 if (user != null && algorithmInfo != null) {
-                    Log.v("FAT_DATA", user.height?.toInt()??0)
+                    Log.v("FAT_DATA:Height", user.height.toString())
                     val bodyFatData = AicareBleConfig
                         .getBodyFatData(
                             algorithmInfo.algorithmId,
@@ -138,6 +139,7 @@ class BleHandler(
                             53,//user.height.toInt(),
                             algorithmInfo.adc
                         )
+                        Log.v("FAT_DATA", Gson().toJson(bodyFatData))
 //                    val bodyFatData1 = BodyFatData()
 //                    //bodyFatData1.age = user.age
 //                    bodyFatData1.weight = algorithmInfo.weight
