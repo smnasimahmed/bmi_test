@@ -134,9 +134,9 @@ class BleHandler(
                         .getBodyFatData(
                             algorithmInfo.algorithmId,
                             user.sex,
-                            20,//user.age,
+                            300,//user.age,
                             ParseData.getKgWeight(algorithmInfo.weight, algorithmInfo.decimalInfo).toDouble(),
-                            53,//user.height.toInt(),
+                            100,//user.height.toInt(),
                             algorithmInfo.adc
                         )
                         Log.v("FAT_DATA", Gson().toJson(bodyFatData))
