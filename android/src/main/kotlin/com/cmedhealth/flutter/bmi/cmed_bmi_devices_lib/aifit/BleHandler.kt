@@ -140,7 +140,8 @@ class BleHandler(
                             user.height,
                             algorithmInfo.adc
                         )
-                        Log.v("FAT_DATA", Gson().toJson(bodyFatData))
+                    Log.v("FAT_DATA", Gson().toJson(bodyFatData))
+
                     val bodyFatData1 = BodyFatData()
                     bodyFatData1.age = user.age
                     bodyFatData1.weight = algorithmInfo.weight
