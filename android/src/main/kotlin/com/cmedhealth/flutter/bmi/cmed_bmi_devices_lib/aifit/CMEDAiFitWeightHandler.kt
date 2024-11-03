@@ -23,7 +23,7 @@ class CMEDAiFitWeightHandler internal constructor(
     fun setUser(user: CMEDUser?) {
         if (user != null) {
             this.user = user
-            Log.v(CMEDAiFitWeightHandler::class.simpleName, user.toString())
+            Log.v("FAT_SCALE:"+CMEDAiFitWeightHandler::class.simpleName, user.toString())
         }
     }
 
