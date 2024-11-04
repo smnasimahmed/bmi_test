@@ -59,6 +59,11 @@ class CmedBmiDevicesLibPlugin : FlutterPlugin, MethodCallHandler, EventChannel.S
                     args["heightInCm"] as Double,
                     args["weightInKg"] as Double
                 )
+                /*
+                val args = call.arguments as Map<String,Any>
+                val argName = args["argName"] as String
+                Klaxon().parse<TargetDataClass>(argName)
+                */
                 Log.v(TAG, "FAT_SCALE: setUser called with data: "+cmedUser.toString())
 
                 cmedAiFitWeightHandler.run {

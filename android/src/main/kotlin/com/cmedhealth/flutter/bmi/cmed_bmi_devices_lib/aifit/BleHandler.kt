@@ -130,7 +130,7 @@ class BleHandler(
 
             override fun onGetAlgorithmInfo(algorithmInfo: AlgorithmInfo?) {
                 if (user != null && algorithmInfo != null) {
-                    Log.v("FAT_DATA", "For User"+user.toString())
+                    Log.v("FAT_DATA", "For "+user.toString())
                     val bodyFatData = AicareBleConfig
                         .getBodyFatData(
                             algorithmInfo.algorithmId,
@@ -143,7 +143,7 @@ class BleHandler(
                     val bodyFatData1 = BodyFatData()
                     bodyFatData1.age = user.age
                     bodyFatData1.weight = algorithmInfo.weight
-                    bodyFatData1.sex = user.sex?: 1
+                    bodyFatData1.sex = user.sex
                     bodyFatData1.height = user.height
                     bodyFatData1.adc = algorithmInfo.adc
                     bodyFatData1.bfr = bodyFatData.bfr
@@ -161,7 +161,7 @@ class BleHandler(
                     bodyFatData1.date = ParseData.getDate()
                     bodyFatData1.time = ParseData.getTime()
 
-                    Log.v("FAT_DATA", Gson().toJson(bodyFatData1))
+                    Log.v("FAT_DATA", Gson().toJsonTree(bodyFatData1).toString())
 
                     onGetFatData(false, bodyFatData1)
                 }
