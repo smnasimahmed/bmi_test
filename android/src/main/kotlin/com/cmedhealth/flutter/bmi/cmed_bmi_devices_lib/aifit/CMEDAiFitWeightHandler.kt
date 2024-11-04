@@ -23,7 +23,6 @@ class CMEDAiFitWeightHandler internal constructor(
     fun setUser(userData: CMEDUser?) {
         if (userData != null) {
             if(userData.heightInCm == 0.0) {
-                user = CMEDUser(1, GenderEnum.MALE.name, 10585, 0L, 167.0, 60.0)
                 Log.v("FAT_SCALE:", "Set Default User:"+getMappedDeviceUser(user).toString())
             } else {
                 user = userData

@@ -49,12 +49,12 @@ class CmedBmiDevicesLibPlugin : FlutterPlugin, MethodCallHandler, EventChannel.S
             }
 
             "setUser" -> {
-                val userJson = call.argument<HashMap<String, Any>>("user").toString()
-                Log.v(TAG, "FAT_SCALE: setUser called with data: "+userJson)
+                val userJson = call.argument<HashMap<String, Any>>("user")
+                Log.v(TAG, "FAT_SCALE: setUser called with data: "+userJson.toString())
                 cmedAiFitWeightHandler.setUser(
                     Gson().fromJson(
                         userJson,
-                        object : TypeToken<CMEDUser>() {}.type
+                        CMEDUser::class.java
                     )
                 )
                 result.success(true)
