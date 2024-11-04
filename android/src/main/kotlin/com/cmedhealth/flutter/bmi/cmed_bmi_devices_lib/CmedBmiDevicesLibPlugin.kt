@@ -5,8 +5,6 @@ import androidx.annotation.NonNull
 import com.cmed.plugin.lib.flutter.cmed_health_flutter_devices_lib.utils.CMEDUser
 import com.cmedhealth.flutter.bmi.cmed_bmi_devices_lib.aifit.CMEDAiFitWeightHandler
 import com.cmedhealth.flutter.bmi.cmed_bmi_devices_lib.aifit.FrecomDeviceCallback
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -15,6 +13,11 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
+import com.beust.klaxon.Klaxon
+import java.io.StringReader
+import com.google.gson.Gson
+import java.lang.reflect.Type;
+import com.google.gson.reflect.TypeToken;
 
 /** CmedBmiDevicesLibPlugin */
 class CmedBmiDevicesLibPlugin : FlutterPlugin, MethodCallHandler, EventChannel.StreamHandler,
@@ -34,11 +37,9 @@ class CmedBmiDevicesLibPlugin : FlutterPlugin, MethodCallHandler, EventChannel.S
     private var eventSink: EventChannel.EventSink? = null
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        channel =
-            MethodChannel(flutterPluginBinding.binaryMessenger, "cmed_bmi_devices_lib/method")
+        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "cmed_bmi_devices_lib/method")
         channel.setMethodCallHandler(this)
-        eventChannel =
-            EventChannel(flutterPluginBinding.binaryMessenger, "cmed_bmi_devices_lib/event")
+        eventChannel = EventChannel(flutterPluginBinding.binaryMessenger, "cmed_bmi_devices_lib/event")
         eventChannel.setStreamHandler(this)
     }
 
@@ -49,14 +50,20 @@ class CmedBmiDevicesLibPlugin : FlutterPlugin, MethodCallHandler, EventChannel.S
             }
 
             "setUser" -> {
-                val userJson = call.argument<HashMap<String, Any>>("user")
-                Log.v(TAG, "FAT_SCALE: setUser called with data: "+userJson.toString())
-                cmedAiFitWeightHandler.setUser(
-                    Gson().fromJson(
-                        userJson,
-                        CMEDUser::class.java
-                    )
+                val args = call.arguments as Map<String,Any>
+                val cmedUser = CMEDUser(
+                    args["id"] as? Long ?: 1,
+                    args["gender"] as String,
+                    args["ageInDays"] as? Int ?: 10585,
+                    args["birthDate"] as? Long ?: 0,
+                    args["heightInCm"] as Double,
+                    args["weightInKg"] as Double
                 )
+                Log.v(TAG, "FAT_SCALE: setUser called with data: "+cmedUser.toString())
+
+                cmedAiFitWeightHandler.run {
+                    cmedAiFitWeightHandler.setUser(cmedUser)
+                }
                 result.success(true)
             }
 

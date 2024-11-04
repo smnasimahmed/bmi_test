@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:core';
 
 import 'package:cmed_bmi_devices_lib/cmed_bmi_devices_lib.dart';

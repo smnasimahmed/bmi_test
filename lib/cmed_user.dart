@@ -28,15 +28,4 @@ class CMEDUser {
     data['weightInKg'] = weightInKg??60.0;
     return data;
   }
-
-  Map<String, String> toArgument() {
-    final Map<String, String> data = {};
-    data['id'] = id?.toString()??'1';
-    data['gender'] = gender??"Male";
-    data['ageInDays'] = ageInDays?.toString()??'10585';
-    data['birthDate'] = birthDate?.toString()??'0';
-    data['heightInCm'] = heightInCm?.toString()??'167.0';
-    data['weightInKg'] = weightInKg?.toString()??'60.0';
-    return data;
-  }
 }

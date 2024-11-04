@@ -14,7 +14,7 @@ enum class GenderEnum(val index: Int, val nameEn: String, val nameBn: String) {
             for (gender in GenderEnum.values()) {
                 if (gender.name == genderName) return gender
             }
-            return GenderEnum.MALE
+            return null
         }
     }
 }
