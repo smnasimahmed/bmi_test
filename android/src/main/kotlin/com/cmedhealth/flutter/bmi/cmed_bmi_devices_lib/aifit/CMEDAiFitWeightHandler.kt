@@ -118,7 +118,7 @@ class CMEDAiFitWeightHandler internal constructor(
     }
 
     override fun onGetFatData(bodyFatData: BodyFatData?) {
-        val fatData = Klaxon().toJsonString(CalcParam(bodyFatData))
+        val fatData = Gson().toJson((CalcParam(bodyFatData)))
         Log.v("FAT_DATA", "Calculated: "+fatData)
         (context as Activity).runOnUiThread {
             callback.onGetResponse("${ResponseEnum.CS_FAT_DATA}:$fatData")
