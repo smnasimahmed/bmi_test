@@ -161,7 +161,7 @@ class BleHandler(
                     bodyFatData1.date = ParseData.getDate()
                     bodyFatData1.time = ParseData.getTime()
 
-                    Log.v("FAT_DATA", Gson().toJsonTree(bodyFatData1).toString())
+                    Log.v("FAT_DATA", "From Device: "+Klaxon().toJsonString(bodyFatData1))
 
                     onGetFatData(false, bodyFatData1)
                 }
