@@ -3,7 +3,9 @@ package com.cmedhealth.flutter.bmi.cmed_bmi_devices_lib.aifit
 import aicare.net.cn.iweightlibrary.entity.BodyFatData
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.annotation.Keep
 
+@Keep
 class CalcParam : Parcelable {
     protected var bodyFatData: BodyFatData? = null
     var c_weight = 0.0
