@@ -23,4 +23,12 @@
   @com.google.gson.annotations.SerializedName <fields>;
 }
 -keep class cn.net.aicare.algorithmutil.**{ *; }
+-keep class com.cmedhealth.flutter.bmi.cmed_bmi_devices_lib.aifit.CalcParam.** { *; }
 -keep class com.cmed.plugin.lib.flutter.cmed_health_flutter_devices_lib.utils.CMEDUser.** { *; }
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+-keepclassmembers class com.cmed.plugin.lib.flutter.cmed_health_flutter_devices_lib.utils.CMEDUser.** {
+    <fields>;
+}

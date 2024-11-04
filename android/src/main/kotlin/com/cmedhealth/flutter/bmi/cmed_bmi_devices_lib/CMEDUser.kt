@@ -1,5 +1,7 @@
 package com.cmed.plugin.lib.flutter.cmed_health_flutter_devices_lib.utils
+import androidx.annotation.Keep
 
+@Keep
 class CMEDUser(
     private var id: Long?,
     private var gender: String?,

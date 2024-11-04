@@ -65,6 +65,7 @@ class CmedBmiDevicesLibPlugin : FlutterPlugin, MethodCallHandler, EventChannel.S
                 Klaxon().parse<TargetDataClass>(argName)
                 */
                 Log.v(TAG, "FAT_SCALE: setUser called with data: "+cmedUser.toString())
+                Log.v(TAG, "FAT_SCALE: setUser called with data: "+Gson().toJson(cmedUser))
 
                 cmedAiFitWeightHandler.run {
                     cmedAiFitWeightHandler.setUser(cmedUser)
