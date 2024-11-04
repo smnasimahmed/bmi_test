@@ -24,11 +24,11 @@ class CMEDAiFitWeightHandler internal constructor(
         if (userData != null) {
             if(userData.heightInCm == 0.0) {
                 user = CMEDUser(1, GenderEnum.MALE.name, 10585, 0L, 167.0, 60.0)
-                Log.v("FAT_SCALE:", "No User Data:Default:"+getMappedDeviceUser(user).toString())
+                Log.v("FAT_SCALE:", "Set Default User:"+getMappedDeviceUser(user).toString())
             } else {
                 user = userData
-                Log.v("FAT_SCALE:", user.toString())
-                Log.v("FAT_SCALE:", getMappedDeviceUser(user).toString())
+                Log.v("FAT_SCALE:", "User Data:"+user.toString())
+                Log.v("FAT_SCALE:", "Set User as:"+getMappedDeviceUser(user).toString())
             }
         }
     }
