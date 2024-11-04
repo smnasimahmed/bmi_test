@@ -10,7 +10,6 @@ import android.util.Log
 import com.cmedhealth.flutter.bmi.cmed_bmi_devices_lib.R
 import com.google.gson.Gson
 import kotlin.math.roundToInt
-import com.beust.klaxon.Klaxon
 
 class BleHandler(
     context: Context,

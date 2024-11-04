@@ -12,7 +12,6 @@ import com.cmed.plugin.lib.flutter.cmed_health_flutter_devices_lib.utils.GenderE
 import com.cmedhealth.flutter.bmi.cmed_bmi_devices_lib.PermissionHandler
 import com.google.gson.Gson
 import kotlin.math.roundToInt
-import com.beust.klaxon.Klaxon
 
 class CMEDAiFitWeightHandler internal constructor(
     private val context: Context,
