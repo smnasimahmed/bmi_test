@@ -5,7 +5,7 @@ import androidx.annotation.Keep
 class CMEDUser(
     private var id: Long?,
     private var gender: String?,
-    var ageInDays: Int,
+    var ageInYear: Int,
     var birthDate: Long,
     var heightInCm: Double,
     var weightInKg: Double
@@ -20,6 +20,6 @@ class CMEDUser(
     }
 
     override fun toString(): String {
-        return "User{id=$id, sex=$gender, age=$ageInDays,  birthDate=$birthDate, height=$heightInCm, weight=$weightInKg}"
+        return "User{id=$id, sex=$gender, age=$ageInYear,  birthDate=$birthDate, height=$heightInCm, weight=$weightInKg}"
     }
 }
