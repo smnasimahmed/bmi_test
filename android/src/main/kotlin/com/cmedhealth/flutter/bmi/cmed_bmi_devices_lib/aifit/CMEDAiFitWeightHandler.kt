@@ -47,7 +47,7 @@ class CMEDAiFitWeightHandler internal constructor(
     private fun getMappedDeviceUser(user: CMEDUser): User {
         val weight: Double = user.weightInKg
         val height: Double = user.heightInCm
-        val age: Int = user.ageInYears
+        val age: Int = user.ageInYear
         return User(
             1, user.getGenderIndex() ?: 1, age,
             height.roundToInt(), (weight * 2.205).roundToInt(), 0

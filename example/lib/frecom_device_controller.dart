@@ -25,7 +25,7 @@ class FrecomDeviceController extends GetxController {
     _cmedBmiDevicesLib.setUser(CMEDUser(
         id: 10,
         gender: 'Female' ,
-        ageInYears: 9650,
+        ageInYear: 9650,
         birthDate: 961851562000,
         heightInCm: 165,
         weightInKg: 67
