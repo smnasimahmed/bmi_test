@@ -129,7 +129,7 @@ class CalcParam : Parcelable {
     fun get_C_obesityStatus(): String {
 
         //source: https://www.rush.edu/health-wellness/quick-guides/what-is-a-healthy-weight
-        var temp = "Not defined"
+        var temp = "Under Weight"
         if (c_bmi >= 19 && c_bmi <= 24) {
             temp = "Normal"
         }
