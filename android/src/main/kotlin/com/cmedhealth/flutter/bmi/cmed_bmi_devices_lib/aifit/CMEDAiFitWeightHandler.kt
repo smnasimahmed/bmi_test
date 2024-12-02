@@ -18,7 +18,7 @@ class CMEDAiFitWeightHandler internal constructor(
     private val callback: FrecomDeviceCallback,
 ) : BleHandler.AiFitWeightCallback {
     private var bleHandler: BleHandler? = null
-    private var user: CMEDUser = CMEDUser(1, GenderEnum.MALE.name, 10585, 0L, 167.0, 60.0)
+    private var user: CMEDUser = CMEDUser(1, GenderEnum.MALE.name, 30, 0L, 167.0, 60.0)
 
     fun setUser(user: CMEDUser?) {
         Log.v("FAT_SCALE:", "Set user called:"+user)
