@@ -21,6 +21,7 @@ class CMEDAiFitWeightHandler internal constructor(
     private var user: CMEDUser = CMEDUser(1, GenderEnum.MALE.name, 10585, 0L, 167.0, 60.0)
 
     fun setUser(user: CMEDUser?) {
+        Log.v("FAT_SCALE:", "Set user called:"+user)
         if (user != null) {
             Log.v("FAT_SCALE:", "Json To Class: User Data:"+user)
             if(user.heightInCm == 0.0) {
@@ -31,6 +32,8 @@ class CMEDAiFitWeightHandler internal constructor(
                 Log.v("FAT_SCALE:", "User Data:"+this.user.toString())
                 Log.v("FAT_SCALE:", "Set User as:"+getMappedDeviceUser(this.user).toString())
             }
+        } else {
+            Log.v("FAT_SCALE:", "Set user called with null")
         }
     }
 
