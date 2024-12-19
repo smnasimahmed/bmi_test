@@ -130,6 +130,10 @@ class BleHandler(
 
             override fun onGetAlgorithmInfo(algorithmInfo: AlgorithmInfo?) {
                 if (user != null && algorithmInfo != null) {
+                    if(user.height < 136.16) {
+                        Log.v("FAT_DATA", "Device Limitation, Height should be greater or equal to 136.16. Current "+user.toString())
+                        return
+                    }
                     Log.v("FAT_DATA", "For "+user.toString())
                     val bodyFatData = AicareBleConfig
                         .getBodyFatData(
